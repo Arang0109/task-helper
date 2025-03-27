@@ -82,11 +82,15 @@ public class FileService {
         time = time.plusSeconds(15);
       }
 
+      writer.newLine();
+      writer.write("END");
+      writer.newLine();
+      writer.write("→");
+
       saveToExcel(rowData);
 
     } catch (IOException e) {
       e.printStackTrace();
-      System.out.println("❌ 파일 생성 실패: " + e.getMessage());
     }
   }
 
