@@ -1,21 +1,23 @@
 package com.ens.taskhelper.config;
 
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.util.Properties;
-
 public class AppConfig {
-  private static final Properties prop = new Properties();
+  private PatternConfig pattern;
+  private FormConfig form;
 
-  static {
-    try (InputStream input = new FileInputStream("config.properties")) {
-      prop.load(input);
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
+  public PatternConfig getPattern() {
+    return pattern;
   }
 
-  public static String getProperty(String key) {
-    return prop.getProperty(key);
+  public void setPattern(PatternConfig pattern) {
+    this.pattern = pattern;
+  }
+
+  public FormConfig getForm() {
+    return form;
+  }
+
+  public void setForm(FormConfig form) {
+    this.form = form;
   }
 }
+

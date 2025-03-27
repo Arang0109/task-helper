@@ -3,23 +3,21 @@ package com.ens.taskhelper.dto;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-public class CreateDataDto {
+public class TvaMeasurementDto {
   private LocalDate date;
   private String company;
   private String stack;
   private LocalTime time;
-  private double referenceValue;
-  private double variableValue;
+  private double standardValue;
+  private double changeAmount;
 
-  public CreateDataDto() {}
-
-  public CreateDataDto(LocalDate date, String company, String stack, LocalTime time, double referenceValue, double variableValue) {
+  public TvaMeasurementDto(LocalDate date, String company, String stack, LocalTime time, double standardValue, double changeAmount) {
     this.date = date;
     this.company = company;
     this.stack = stack;
     this.time = time;
-    this.referenceValue = referenceValue;
-    this.variableValue = variableValue;
+    this.standardValue = standardValue;
+    this.changeAmount = changeAmount;
   }
 
   public LocalDate getDate() {
@@ -54,31 +52,31 @@ public class CreateDataDto {
     this.time = time;
   }
 
-  public double getReferenceValue() {
-    return referenceValue;
+  public double getStandardValue() {
+    return standardValue;
   }
 
-  public void setReferenceValue(double referenceValue) {
-    this.referenceValue = referenceValue;
+  public void setStandardValue(double standardValue) {
+    this.standardValue = standardValue;
   }
 
-  public double getVariableValue() {
-    return variableValue;
+  public double getChangeAmount() {
+    return changeAmount;
   }
 
-  public void setVariableValue(double variableValue) {
-    this.variableValue = variableValue;
+  public void setChangeAmount(double changeAmount) {
+    this.changeAmount = changeAmount;
   }
 
   @Override
   public String toString() {
-    return "CreateDataDto{" +
+    return "TvaMeasurementDto{" +
         "date=" + date +
         ", company='" + company + '\'' +
         ", stack='" + stack + '\'' +
         ", time=" + time +
-        ", referenceValue=" + referenceValue +
-        ", variableValue=" + variableValue +
+        ", standardValue=" + standardValue +
+        ", changeAmount=" + changeAmount +
         '}';
   }
 }

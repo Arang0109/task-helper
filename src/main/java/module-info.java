@@ -8,11 +8,11 @@ module com.ens.taskhelper {
   requires org.apache.commons.codec;
   requires org.apache.commons.compress;
 
-  requires java.sql;
   requires poi;
   requires poi.ooxml;
   requires poi.ooxml.schemas;
   requires xmlbeans;
+  requires org.yaml.snakeyaml;
 
   opens com.ens.taskhelper to javafx.fxml;
   exports com.ens.taskhelper;

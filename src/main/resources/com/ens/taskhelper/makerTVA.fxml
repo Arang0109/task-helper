@@ -211,12 +211,9 @@
                          <!-- 하단 버튼 바 -->
                         <ButtonBar layoutY="294.0" prefHeight="50.0" prefWidth="640.0" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="294.0">
                           <buttons>
-                              <Button fx:id="createDataBtn" mnemonicParsing="false" text="데이터 만들기"
-                                      onAction="#onCreateData"/>
-                              <Button fx:id="createFileBtn" mnemonicParsing="false" text="파일 생성"
-                                      onAction="#onCreateFile"/>
-                              <Button fx:id="closeBtn" mnemonicParsing="false" text="종료"
-                                      onAction="#onCloseBtn"/>
+                              <Button fx:id="createDataBtn" mnemonicParsing="false" text="데이터 만들기" />
+                              <Button fx:id="createFileBtn" mnemonicParsing="false" text="파일 생성" />
+                              <Button fx:id="closeBtn" mnemonicParsing="false" text="종료" />
                           </buttons>
                            <padding>
                               <Insets right="10.0" />
