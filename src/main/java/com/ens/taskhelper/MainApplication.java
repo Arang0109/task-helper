@@ -9,13 +9,20 @@ import java.io.IOException;
 
 public class MainApplication extends Application {
   @Override
-  public void start(Stage stage) throws IOException {
-    FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("makerTVA.fxml"));
-    Scene scene = new Scene(fxmlLoader.load());
+  public void start(Stage stage) {
+    try {
+      FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("/com/ens/taskhelper/makerTVA.fxml"));
+      Scene scene = new Scene(fxmlLoader.load());
 
-    stage.setScene(scene);
-    stage.show();
+      stage.setScene(scene);
+      stage.setTitle("TaskHelper");
+      stage.show();
+
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
   }
+
 
   public static void main(String[] args) {
     launch();

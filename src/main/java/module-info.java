@@ -4,8 +4,15 @@ module com.ens.taskhelper {
 
   requires org.controlsfx.controls;
   requires net.synedra.validatorfx;
-  requires org.apache.poi.ooxml;
+
+  requires org.apache.commons.codec;
+  requires org.apache.commons.compress;
+
   requires java.sql;
+  requires poi;
+  requires poi.ooxml;
+  requires poi.ooxml.schemas;
+  requires xmlbeans;
 
   opens com.ens.taskhelper to javafx.fxml;
   exports com.ens.taskhelper;
