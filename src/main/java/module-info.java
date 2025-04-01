@@ -17,9 +17,9 @@ module com.ens.taskhelper {
   opens com.ens.taskhelper to javafx.fxml;
   exports com.ens.taskhelper;
   exports com.ens.taskhelper.controller;
-  opens com.ens.taskhelper.controller to javafx.fxml;
+//  opens com.ens.taskhelper.controller to javafx.fxml;
   exports com.ens.taskhelper.service;
-  opens com.ens.taskhelper.service to javafx.fxml;
+//  opens com.ens.taskhelper.service to javafx.fxml;
   exports com.ens.taskhelper.util;
-  opens com.ens.taskhelper.util to javafx.fxml;
+//  opens com.ens.taskhelper.util to javafx.fxml;
 }

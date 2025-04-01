@@ -22,13 +22,16 @@ public class MeasurementDataGenerator {
     for (int i = 0; i < 120; i++) {
       double noise = rand.nextDouble(range) - range / 2.0;
       double value = base + noise;
-      String rValue = (value >= 100) ? String.format("%.0f", value) : String.format("%.1f", value);
+      double rounded = Math.round(value * 10) / 10.0;
+
+      String rValue = (rounded >= 100) ? String.format("%.0f", rounded) : String.format("%.1f", rounded);
 
       rows.add(new String[] {
           date,
+          "  ",
           time.format(timeFmt),
-          "0", "PPM OK",
-          rValue, "PPM OK"
+          "     0.0 PPM OK            ",
+          rValue, " PPM OK         "
       });
 
       time = time.plusSeconds(15);

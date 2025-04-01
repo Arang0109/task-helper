@@ -66,13 +66,20 @@ public class ExcelFileWriter implements FileWriterStrategy {
 
       // TIME
       DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss", Locale.ENGLISH);
-      row.createCell(1).setCellValue(cols[1]);
+      row.createCell(1).setCellValue(cols[2]);
 
       // FID B
-      row.createCell(2).setCellValue(Integer.parseInt(cols[2]));
+      Cell cell = row.createCell(2);
+
+      CellStyle style = workbook.createCellStyle();
+      DataFormat format = workbook.createDataFormat();
+      style.setDataFormat(format.getFormat("0.0")); // 또는 "0.0##" 등
+
+      cell.setCellStyle(style);
+      cell.setCellValue(0.0);
 
       // Background Text
-      row.createCell(3).setCellValue(cols[3]);
+      row.createCell(3).setCellValue("PPM OK");
 
       // FID CO
       double val = Double.parseDouble(cols[4]);
@@ -80,7 +87,7 @@ public class ExcelFileWriter implements FileWriterStrategy {
       row.createCell(4).setCellValue(val);
 
       // Concentration Text
-      row.createCell(5).setCellValue(cols[5]);
+      row.createCell(5).setCellValue("PPM OK");
     }
 
     // Footer Rows

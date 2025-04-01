@@ -73,6 +73,10 @@ public class TvaMeasurementViewModel {
     FileChooser fileChooser = new FileChooser();
     File file = fileChooser.showSaveDialog(null);
     if (file != null) {
+      if (!file.getName().toLowerCase().endsWith(".txt")) {
+        file = new File(file.getAbsolutePath() + ".txt");
+      }
+
       FileGeneratorService fileGeneratorService = new FileGeneratorService(file);
       fileGeneratorService.createFiles(dataDto);
     }

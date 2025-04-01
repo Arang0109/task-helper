@@ -1,6 +1,16 @@
 @echo off
+setlocal
+
+set "APP_HOME=%~dp0"
+set "LIB_PATH=%APP_HOME%lib"
+set "JAR_FILE=%APP_HOME%\snapshot\task-helper-1.0-SNAPSHOT.jar"
+
+
 java ^
-  --module-path D:\Desktop\TaskHelper\lib ^
+  --module-path "%LIB_PATH%" ^
   --add-modules javafx.controls,javafx.fxml ^
-  -cp D:\Desktop\TaskHelper\task-helper-1.0-SNAPSHOT.jar;D:\Desktop\TaskHelper\lib\* ^
+  -cp "%JAR_FILE%;%LIB_PATH%\*" ^
   com.ens.taskhelper.MainApplication
+
+endlocal
+pause

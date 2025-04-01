@@ -23,7 +23,7 @@ public class TextFileWriter implements FileWriterStrategy {
       for (String line : header) writer.write(line + "\n");
 
       for (String[] row : data) {
-        writer.write(String.join("  ", row));
+        writer.write(String.join("", row));
         writer.newLine();
       }
 
