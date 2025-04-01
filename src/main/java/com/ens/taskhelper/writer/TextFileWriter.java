@@ -2,10 +2,7 @@ package com.ens.taskhelper.writer;
 
 import com.ens.taskhelper.dto.TvaMeasurementDto;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.List;
 
 public class TextFileWriter implements FileWriterStrategy {
@@ -20,16 +17,28 @@ public class TextFileWriter implements FileWriterStrategy {
   @Override
   public void write(File targetFile, TvaMeasurementDto dto, List<String[]> data) {
     try (BufferedWriter writer = new BufferedWriter(new FileWriter(targetFile))) {
-      for (String line : header) writer.write(line + "\n");
+        header.stream()
+            .map(line -> line + "\n")
+            .forEach(line -> writeSafely(writer, line));
 
-      for (String[] row : data) {
-        writer.write(String.join("", row));
-        writer.newLine();
-      }
 
-      writer.newLine();
-      for (String line : footer) writer.write(line + "\n");
+        data.stream()
+            .map(line -> String.join("", line) + "\n")
+            .forEach(line -> writeSafely(writer, line));
 
+        writeSafely(writer, "\n");
+
+        footer.stream()
+            .map(line -> line + "\n")
+            .forEach(line -> writeSafely(writer, line));
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+
+  private void writeSafely(BufferedWriter writer, String line) {
+    try {
+      writer.write(line);
     } catch (IOException e) {
       e.printStackTrace();
     }

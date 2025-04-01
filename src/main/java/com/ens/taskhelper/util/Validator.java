@@ -24,6 +24,6 @@ public class Validator {
       return "기준값 또는 변화값이 숫자가 아닙니다.";
     }
 
-    return "OK"; // 모든 검증 통과
+    return "OK";
   }
 }

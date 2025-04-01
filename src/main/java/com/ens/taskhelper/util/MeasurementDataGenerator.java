@@ -11,17 +11,18 @@ import java.util.Random;
 public class MeasurementDataGenerator {
   public static List<String[]> generate(TvaMeasurementDto dto) {
     List<String[]> rows = new ArrayList<>();
+
     LocalTime time = dto.getTime();
-    double base = dto.getStandardValue();
-    double range = dto.getChangeAmount();
+    double standardValue = dto.getStandardValue();
+    double changeAmount = dto.getChangeAmount();
     Random rand = new Random();
 
     DateTimeFormatter timeFmt = DateTimeFormatter.ofPattern("HH:mm:ss");
     String date = new DateFormatter().dateFormat(dto.getDate());
 
     for (int i = 0; i < 120; i++) {
-      double noise = rand.nextDouble(range) - range / 2.0;
-      double value = base + noise;
+      double noise = rand.nextDouble(changeAmount) - changeAmount / 2.0;
+      double value = standardValue + noise;
       double rounded = Math.round(value * 10) / 10.0;
 
       String rValue = (rounded >= 100) ? String.format("%.0f", rounded) : String.format("%.1f", rounded);

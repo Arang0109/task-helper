@@ -8,6 +8,7 @@ form:
     header:
       - "LOGGED DATA"
       - "VER= 2.00"
+      - ""
       - "AUTO DATA                  "
       - "  DATE       TIME     FID BACKGROUND       FID CONCENTRATION  "
       - "---------  --------  --------------------  --------------------"
