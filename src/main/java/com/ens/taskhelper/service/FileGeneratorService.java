@@ -14,12 +14,15 @@ import java.util.List;
 public class FileGeneratorService {
   private final File targetFile;
   private final List<FileWriterStrategy> writers;
+  private final TvaMeasurementDto measurementDto;
 
-  public FileGeneratorService(File targetFile) {
+  public FileGeneratorService(File targetFile, TvaMeasurementDto measurementDto) {
     AppConfig config = YamlLoader.getConfig();
     List<String> headerLines = config.getForm().getText().getHeader();
     List<String> footerLines = config.getForm().getText().getFooter();
+
     this.targetFile = targetFile;
+    this.measurementDto = measurementDto;
 
     this.writers = List.of(
         new TextFileWriter(headerLines, footerLines),
@@ -27,10 +30,10 @@ public class FileGeneratorService {
     );
   }
 
-  public void createFiles(TvaMeasurementDto dto) {
-    List<String[]> rowData = MeasurementDataGenerator.generate(dto);
+  public void createFiles() {
+    List<String[]> rowData = MeasurementDataGenerator.generate(measurementDto);
     for (FileWriterStrategy writer : writers) {
-      writer.write(targetFile, dto, rowData);
+      writer.write(targetFile, measurementDto, rowData);
     }
   }
 }

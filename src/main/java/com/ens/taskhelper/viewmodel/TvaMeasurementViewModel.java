@@ -45,18 +45,15 @@ public class TvaMeasurementViewModel {
 
     if (result.equals("OK")) {
       consoleMessageProperty().setValue("✅ 유효성 검사 통과");
-      consoleColorProperty().set(Paint.valueOf("blue"));
       dataReady = true;
     } else {
       consoleMessageProperty().setValue("❌ " + result);
-      consoleColorProperty().set(Paint.valueOf("red"));
     }
   }
 
   public void onCreateFile() {
     if(!dataReady) {
       consoleMessageProperty().setValue("먼저 데이터 생성을 해주세요.");
-      consoleColorProperty().set(Paint.valueOf("red"));
       return;
     }
 
@@ -77,12 +74,11 @@ public class TvaMeasurementViewModel {
         file = new File(file.getAbsolutePath() + ".txt");
       }
 
-      FileGeneratorService fileGeneratorService = new FileGeneratorService(file);
-      fileGeneratorService.createFiles(dataDto);
+      FileGeneratorService fileGeneratorService = new FileGeneratorService(file, dataDto);
+      fileGeneratorService.createFiles();
     }
 
     consoleMessageProperty().setValue("파일 생성 완료");
-    consoleColorProperty().set(Paint.valueOf("blue"));
   }
 
   public void onCloseBtn() { System.exit(0); }
